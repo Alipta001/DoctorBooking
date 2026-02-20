@@ -43,7 +43,7 @@ export default function LoginLayout() {
 
         <div className="image flex justify-center mb-6">
           <img
-            src="/loginImage.png"
+            src="/images/profile-icon.png"
             alt="Login Image"
             className="w-32 h-auto rounded-full"
           />
