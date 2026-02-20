@@ -116,57 +116,89 @@ export default function LoginForm() {
 // }
 
 
+
 "use client"
+import { useForm } from 'react-hook-form';
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from 'yup';
+
+// Validation Schema
+const schema = yup.object().shape({
+    email: yup.string().email("Invalid format").required("Required"),
+    password: yup.string().min(6, "Min 6 characters").required("Required"),
+});
 
 export default function LoginForm() {
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm({
+        resolver: yupResolver(schema),
+        mode: "onBlur"
+    });
+
+    const onSubmit = (data) => {
+        console.log("Login Data:", data);
+        // Add your login mutation here
     }
 
     return (
-        
-            <form onSubmit={handleSubmit} className="space-y-8">
-                <div className="space-y-4">
-                    <div className="group relative">
-                        <input 
-                            type="email" 
-                            id="email" 
-                            placeholder="Email Address" 
-                            className="w-full px-0 py-3 bg-transparent border-b border-gray-200 outline-none transition-all duration-300
-                                       placeholder:text-gray-400 text-gray-800
-                                       focus:border-black"
-                        />
-                        <div className="absolute bottom-0 left-0 h-[1.5px] w-0 bg-black transition-all duration-500 group-focus-within:w-full" />
-                    </div>
-
-                    <div className="group relative">
-                        <input 
-                            type="password" 
-                            id="password" 
-                            placeholder="Password" 
-                            className="w-full px-0 py-3 bg-transparent border-b border-gray-200 outline-none transition-all duration-300
-                                       placeholder:text-gray-400 text-gray-800
-                                       focus:border-black"
-                        />
-                        <div className="absolute bottom-0 left-0 h-[1.5px] w-0 bg-black transition-all duration-500 group-focus-within:w-full" />
-                    </div>
-                </div>
-                <button 
-                    type='submit' 
-                    className="group relative w-full h-[54px] bg-black text-white rounded-full overflow-hidden transition-all duration-300 hover:shadow-[0_15px_30px_rgba(0,0,0,0.2)] active:scale-[0.98] cursor-pointer"
-                >
-                    <span className="relative z-10 font-medium tracking-tight text-sm">
-                        Login
-                    </span>
-               
-                    <div className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
-                </button>
-                <div className="flex items-center gap-4 my-2">
-                    <div className="h-[1px] w-full bg-gray-100" />
-                    <span className="text-[10px] text-gray-400 font-bold uppercase tracking-widest">OR</span>
-                    <div className="h-[1px] w-full bg-gray-100" />
-                </div>
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
+            <div className="space-y-6"> {/* Increased gap slightly for error messages */}
                 
-            </form>
-    )
+                {/* Email Field */}
+                <div className="group relative">
+                    <input 
+                        {...register("email")}
+                        type="email" 
+                        id="email" 
+                        placeholder="Email Address" 
+                        className={`w-full px-0 py-3 bg-transparent border-b ${errors.email ? 'border-amber-600/40' : 'border-gray-200'} outline-none transition-all duration-300 placeholder:text-gray-400 text-gray-800 focus:border-black`}
+                    />
+                    <div className={`absolute bottom-0 left-0 h-[1.5px] w-0 transition-all duration-500 group-focus-within:w-full ${errors.email ? 'bg-amber-600' : 'bg-black'}`} />
+                    {errors.email && (
+                        <span className="absolute -bottom-5 left-0 flex items-center gap-2 animate-in fade-in slide-in-from-left-2 duration-300">
+                            <span className="h-[2px] w-2 bg-amber-600 rounded-full" />
+                            <p className="text-[12px] font-bold uppercase tracking-widest text-amber-700">{errors.email.message}</p>
+                        </span>
+                    )}
+                </div>
+
+                {/* Password Field */}
+                <div className="group relative">
+                    <input 
+                        {...register("password")}
+                        type="password" 
+                        id="password" 
+                        placeholder="Password" 
+                        className={`w-full px-0 py-3 bg-transparent border-b ${errors.password ? 'border-amber-600/40' : 'border-gray-200'} outline-none transition-all duration-300 placeholder:text-gray-400 text-gray-800 focus:border-black`}
+                    />
+                    <div className={`absolute bottom-0 left-0 h-[1.5px] w-0 transition-all duration-500 group-focus-within:w-full ${errors.password ? 'bg-amber-600' : 'bg-black'}`} />
+                    {errors.password && (
+                        <span className="absolute -bottom-5 left-0 flex items-center gap-2 animate-in fade-in slide-in-from-left-2 duration-300">
+                            <span className="h-[2px] w-2 bg-amber-600 rounded-full" />
+                            <p className="text-[12px] font-bold uppercase tracking-widest text-amber-700">{errors.password.message}</p>
+                        </span>
+                    )}
+                </div>
+            </div>
+
+            <button 
+                type='submit' 
+                className="group relative w-full h-[54px] bg-black text-white rounded-full overflow-hidden transition-all duration-300 hover:shadow-[0_15px_30px_rgba(0,0,0,0.2)] active:scale-[0.98] cursor-pointer"
+            >
+                <span className="relative z-10 font-medium tracking-tight text-[14px] uppercase">
+                    Login
+                </span>
+                <div className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+            </button>
+
+            <div className="flex items-center gap-4 my-2">
+                <div className="h-[1px] w-full bg-gray-100" />
+                <span className="text-[14px] text-gray-400 font-bold uppercase tracking-widest">OR</span>
+                <div className="h-[1px] w-full bg-gray-100" />
+            </div>
+        </form>
+    );
 }

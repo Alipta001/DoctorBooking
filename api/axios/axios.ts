@@ -18,8 +18,7 @@ axios.interceptors.request.use(function (config) {
     }
     return config;
   }, function (error) {
-    // Do something with request error
     return Promise.reject(error);
   },
-  { synchronous: true, runWhen: () => /* This function returns true */ true }
+  { synchronous: true, runWhen: () =>  true }
 );

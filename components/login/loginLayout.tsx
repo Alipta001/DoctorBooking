@@ -53,31 +53,51 @@ export default function LoginLayout() {
           <LoginForm />
           <Link href="/auth/signup">
             <button
-            type="button"
-            className="w-full py-3.5 border border-gray-200 rounded-full text-sm font-semibold text-gray-700 transition-all duration-300 
-                               hover:bg-gray-50 hover:border-gray-300 hover:shadow-sm active:scale-[0.98] cursor-pointer"
-          >
-            Create an account
-          </button>
-            </Link>
-
-          <div className="text-center pt-2">
-            <button
               type="button"
-              className="group relative inline-flex flex-col items-center cursor-pointer"
+              className="w-full py-3.5 border border-gray-200 rounded-full text-sm font-semibold text-gray-700 transition-all duration-300 
+                               hover:bg-gray-50 hover:border-gray-300 hover:shadow-sm active:scale-[0.98] cursor-pointer"
             >
-              {/* The Text */}
-              <span className="text-[11px] font-bold uppercase tracking-[0.15em] text-gray-400 transition-colors duration-300 group-hover:text-black">
-                Forgotten Credentials?
-              </span>
-
-              {/* The Kinetic Underline - animates from the center out */}
-              <span className="relative w-0 h-[1px] bg-black mt-1 transition-all duration-300 group-hover:w-full" />
-
-              {/* Subtle Glow Point - only appears on hover */}
-              <span className="absolute -bottom-2 w-1 h-1 bg-blue-500 rounded-full scale-0 transition-transform duration-500 group-hover:scale-100 blur-[1px]" />
+              Create an account
             </button>
-          </div>
+          </Link>
+
+          <div className="text-center pt-6">
+  {/* Container for links with spacing and a divider */}
+  <div className="flex items-center justify-center gap-6 sm:gap-8">
+    
+    {/* Forgot Password */}
+    <button
+      type="button"
+      className="group relative flex flex-col items-center cursor-pointer outline-none"
+    >
+      <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.2em] text-gray-400 transition-colors duration-300 group-hover:text-black">
+        Forgot Password
+      </span>
+      {/* Animated Underline */}
+      <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-black transition-all duration-500 group-hover:w-full" />
+      {/* Premium Accent Dot */}
+      <span className="absolute -bottom-3 w-[3px] h-[3px] bg-amber-600 rounded-full opacity-0 translate-y-2 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0" />
+    </button>
+
+    {/* Vertical Minimalist Divider */}
+    <div className="h-4 w-[1px] bg-gray-200 rotate-[20deg]" />
+
+    {/* Update Password */}
+    <button
+      type="button"
+      className="group relative flex flex-col items-center cursor-pointer outline-none"
+    >
+      <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.2em] text-gray-400 transition-colors duration-300 group-hover:text-black">
+        Update Password
+      </span>
+      {/* Animated Underline */}
+      <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-black transition-all duration-500 group-hover:w-full" />
+      {/* Premium Accent Dot */}
+      <span className="absolute -bottom-3 w-[3px] h-[3px] bg-amber-600 rounded-full opacity-0 translate-y-2 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0" />
+    </button>
+    
+  </div>
+</div>
         </div>
       </div>
     </div>
