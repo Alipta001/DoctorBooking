@@ -1,0 +1,33 @@
+import React from 'react'
+import RegisterForm from './registerForm'
+
+export default function RegisterLayout() {
+  return (
+   <div className="loginLayout relative min-h-screen w-full flex items-center justify-center overflow-hidden">
+      <div className="backgroundImg absolute inset-0 -z-10">
+        <img
+          src="/images/login2.jpeg"
+          alt="Login Background"
+          className="w-full h-full object-cover blur-md scale-110"
+        />
+        <div className="absolute inset-0 bg-black/30"></div>
+      </div>
+      <div className="container relative z-10 max-w-md w-full bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-2xl mx-4">
+        <div className="loginHeader text-center mb-8">
+          <h1 className="text-3xl font-bold text-gray-800">Welcome Back!</h1>
+          <p className="text-gray-600 mt-2">Please login to your account</p>
+        </div>
+
+        <div className="image flex justify-center mb-6">
+          <img
+            src="/loginImage.png"
+            alt="Login Image"
+            className="w-32 h-auto rounded-full"
+          />
+        </div>
+        
+        <RegisterForm />
+      </div>
+    </div>
+  )
+}

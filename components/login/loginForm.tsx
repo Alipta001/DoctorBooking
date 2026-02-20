@@ -117,7 +117,6 @@ export default function LoginForm() {
 
 
 "use client"
-import React from 'react'
 
 export default function LoginForm() {
     const handleSubmit = (e) => {
@@ -125,10 +124,8 @@ export default function LoginForm() {
     }
 
     return (
-        <div className="loginForm w-full max-w-sm mx-auto">
+        
             <form onSubmit={handleSubmit} className="space-y-8">
-                
-                {/* Inputs Section */}
                 <div className="space-y-4">
                     <div className="group relative">
                         <input 
@@ -139,7 +136,6 @@ export default function LoginForm() {
                                        placeholder:text-gray-400 text-gray-800
                                        focus:border-black"
                         />
-                        {/* The Premium "Growth" Underline */}
                         <div className="absolute bottom-0 left-0 h-[1.5px] w-0 bg-black transition-all duration-500 group-focus-within:w-full" />
                     </div>
 
@@ -155,53 +151,22 @@ export default function LoginForm() {
                         <div className="absolute bottom-0 left-0 h-[1.5px] w-0 bg-black transition-all duration-500 group-focus-within:w-full" />
                     </div>
                 </div>
-
-                {/* Primary Action Button */}
                 <button 
                     type='submit' 
                     className="group relative w-full h-[54px] bg-black text-white rounded-full overflow-hidden transition-all duration-300 hover:shadow-[0_15px_30px_rgba(0,0,0,0.2)] active:scale-[0.98] cursor-pointer"
                 >
                     <span className="relative z-10 font-medium tracking-tight text-sm">
-                        Continue
+                        Login
                     </span>
-                    {/* Subtle Shine Hover Effect */}
+               
                     <div className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
                 </button>
-
-                {/* Divider */}
                 <div className="flex items-center gap-4 my-2">
                     <div className="h-[1px] w-full bg-gray-100" />
                     <span className="text-[10px] text-gray-400 font-bold uppercase tracking-widest">OR</span>
                     <div className="h-[1px] w-full bg-gray-100" />
                 </div>
-
-                {/* Secondary Premium Button */}
-                <button 
-                    type="button"
-                    className="w-full py-3.5 border border-gray-200 rounded-full text-sm font-semibold text-gray-700 transition-all duration-300 
-                               hover:bg-gray-50 hover:border-gray-300 hover:shadow-sm active:scale-[0.98] cursor-pointer"
-                >
-                    Create an account
-                </button>
-
-                <div className="text-center pt-2">
-    <button 
-        type="button" 
-        className="group relative inline-flex flex-col items-center cursor-pointer"
-    >
-        {/* The Text */}
-        <span className="text-[11px] font-bold uppercase tracking-[0.15em] text-gray-400 transition-colors duration-300 group-hover:text-black">
-            Forgotten Credentials?
-        </span>
-        
-        {/* The Kinetic Underline - animates from the center out */}
-        <span className="relative w-0 h-[1px] bg-black mt-1 transition-all duration-300 group-hover:w-full" />
-        
-        {/* Subtle Glow Point - only appears on hover */}
-        <span className="absolute -bottom-2 w-1 h-1 bg-blue-500 rounded-full scale-0 transition-transform duration-500 group-hover:scale-100 blur-[1px]" />
-    </button>
-</div>
+                
             </form>
-        </div>
     )
 }

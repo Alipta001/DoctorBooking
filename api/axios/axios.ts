@@ -1,6 +1,7 @@
 import axios from "axios";
-
+import { Cookies } from "react-cookie";
 export const BaseURL = "http://localhost:4000";
+const cookie = new Cookies();
 export const AxiosInstance = axios.create({
   baseURL: BaseURL,
   headers: {
@@ -9,7 +10,7 @@ export const AxiosInstance = axios.create({
 });
 
 axios.interceptors.request.use(function (config) {
-    const token = cookies.get("token")
+    const token = cookie.get("token")
     console.log(token);
     if(token){
       config.headers = config.headers || {};
@@ -20,5 +21,5 @@ axios.interceptors.request.use(function (config) {
     // Do something with request error
     return Promise.reject(error);
   },
-  { synchronous: true, runWhen: () => /* This function returns true */}
+  { synchronous: true, runWhen: () => /* This function returns true */ true }
 );
