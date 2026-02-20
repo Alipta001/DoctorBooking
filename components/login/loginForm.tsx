@@ -1,0 +1,207 @@
+/* "use client"
+import React from 'react'
+
+export default function LoginForm() {
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        // Handle form submission logic here
+    }
+  return (
+    <div className="loginForm">
+        <form onSubmit={handleSubmit}>
+            <div className="email mb-4">
+                <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
+                <input 
+                    type="email" 
+                    id="email" 
+                    placeholder='Email Address' 
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                />
+            </div>
+            <div className="password mb-4">
+                <label htmlFor="password" className="block text-sm font-medium text-gray-700">Password</label>
+                <input 
+                    type="password" 
+                    id="password" 
+                    placeholder='Password' 
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                />
+            </div>
+            <button type='submit' className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition duration-200">
+                Login
+            </button>
+        </form>
+    </div>
+  )
+} */
+
+// "use client"
+
+// export default function LoginForm() {
+//     const handleSubmit = (e) => {
+//         e.preventDefault();
+//     }
+
+//   return (
+//     <div className="loginForm">
+//         <form onSubmit={handleSubmit} className="space-y-6">
+//             {/* Input Fields with Glassmorphism */}
+//             <div className="space-y-5">
+//                 <div className="group relative">
+//                     <label htmlFor="email" className="block text-xs font-bold uppercase tracking-widest text-slate-500 mb-2 ml-1 transition-colors group-focus-within:text-blue-500">
+//                         EMAIL
+//                     </label>
+//                     <input 
+//                         type="email" 
+//                         id="email" 
+//                         placeholder='name@company.com' 
+//                         className="w-full px-5 py-4 bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl outline-none transition-all duration-300
+//                                    placeholder:text-slate-400 text-slate-900 shadow-inner
+//                                    hover:bg-white/20 hover:border-white/40
+//                                    focus:bg-white focus:ring-[5px] focus:ring-blue-500/10 focus:border-blue-500"
+//                     />
+//                 </div>
+
+//                 <div className="group relative">
+//                     <label htmlFor="password" className="block text-xs font-bold uppercase tracking-widest text-slate-500 mb-2 ml-1 transition-colors group-focus-within:text-blue-500">
+//                        PASSWORD
+//                     </label>
+//                     <input 
+//                         type="password" 
+//                         id="password" 
+//                         placeholder='••••••••' 
+//                         className="w-full px-5 py-4 bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl outline-none transition-all duration-300
+//                                    placeholder:text-slate-400 text-slate-900
+//                                    hover:bg-white/20 hover:border-white/40
+//                                    focus:bg-white focus:ring-[5px] focus:ring-blue-500/10 focus:border-blue-500"
+//                     />
+//                 </div>
+//             </div>
+
+//             {/* THE PREMIUM BUTTON */}
+//             <div className="relative group">
+//                 {/* Outer Glow Background */}
+//                 <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-2xl blur-md opacity-25 group-hover:opacity-75 group-hover:blur-lg transition duration-500"></div>
+                
+//                 <button 
+//                     type='submit' 
+//                     className="relative w-full h-[58px] bg-slate-900 rounded-2xl overflow-hidden transition-all duration-300 active:scale-95 cursor-pointer"
+//                 >
+//                     {/* Animated Shimmer Sweep */}
+//                     <div className="absolute inset-0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-in-out bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+                    
+//                     {/* Inner Content */}
+//                     <span className="relative flex items-center justify-center gap-3 text-white font-bold tracking-wider text-sm">
+//                         LOGIN
+//                         <div className="flex items-center justify-center w-6 h-6 rounded-full bg-white/10 group-hover:bg-white/20 transition-colors">
+//                             <svg className="w-3 h-3 text-white transition-transform duration-500 group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+//                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+//                             </svg>
+//                         </div>
+//                     </span>
+                    
+//                     {/* Hover Border Highlight */}
+//                     <div className="absolute inset-0 border border-white/10 group-hover:border-white/30 rounded-2xl pointer-events-none transition-colors" />
+//                 </button>
+//             </div>
+
+//             <div className="flex justify-center">
+//                 <button type="button" className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 hover:text-blue-600 transition-all duration-300">
+//                     Don't have an account? Sign Up
+//                 </button>
+//             </div>
+//         </form>
+//     </div>
+//   )
+// }
+
+
+"use client"
+import React from 'react'
+
+export default function LoginForm() {
+    const handleSubmit = (e) => {
+        e.preventDefault();
+    }
+
+    return (
+        <div className="loginForm w-full max-w-sm mx-auto">
+            <form onSubmit={handleSubmit} className="space-y-8">
+                
+                {/* Inputs Section */}
+                <div className="space-y-4">
+                    <div className="group relative">
+                        <input 
+                            type="email" 
+                            id="email" 
+                            placeholder="Email Address" 
+                            className="w-full px-0 py-3 bg-transparent border-b border-gray-200 outline-none transition-all duration-300
+                                       placeholder:text-gray-400 text-gray-800
+                                       focus:border-black"
+                        />
+                        {/* The Premium "Growth" Underline */}
+                        <div className="absolute bottom-0 left-0 h-[1.5px] w-0 bg-black transition-all duration-500 group-focus-within:w-full" />
+                    </div>
+
+                    <div className="group relative">
+                        <input 
+                            type="password" 
+                            id="password" 
+                            placeholder="Password" 
+                            className="w-full px-0 py-3 bg-transparent border-b border-gray-200 outline-none transition-all duration-300
+                                       placeholder:text-gray-400 text-gray-800
+                                       focus:border-black"
+                        />
+                        <div className="absolute bottom-0 left-0 h-[1.5px] w-0 bg-black transition-all duration-500 group-focus-within:w-full" />
+                    </div>
+                </div>
+
+                {/* Primary Action Button */}
+                <button 
+                    type='submit' 
+                    className="group relative w-full h-[54px] bg-black text-white rounded-full overflow-hidden transition-all duration-300 hover:shadow-[0_15px_30px_rgba(0,0,0,0.2)] active:scale-[0.98] cursor-pointer"
+                >
+                    <span className="relative z-10 font-medium tracking-tight text-sm">
+                        Continue
+                    </span>
+                    {/* Subtle Shine Hover Effect */}
+                    <div className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+                </button>
+
+                {/* Divider */}
+                <div className="flex items-center gap-4 my-2">
+                    <div className="h-[1px] w-full bg-gray-100" />
+                    <span className="text-[10px] text-gray-400 font-bold uppercase tracking-widest">OR</span>
+                    <div className="h-[1px] w-full bg-gray-100" />
+                </div>
+
+                {/* Secondary Premium Button */}
+                <button 
+                    type="button"
+                    className="w-full py-3.5 border border-gray-200 rounded-full text-sm font-semibold text-gray-700 transition-all duration-300 
+                               hover:bg-gray-50 hover:border-gray-300 hover:shadow-sm active:scale-[0.98] cursor-pointer"
+                >
+                    Create an account
+                </button>
+
+                <div className="text-center pt-2">
+    <button 
+        type="button" 
+        className="group relative inline-flex flex-col items-center cursor-pointer"
+    >
+        {/* The Text */}
+        <span className="text-[11px] font-bold uppercase tracking-[0.15em] text-gray-400 transition-colors duration-300 group-hover:text-black">
+            Forgotten Credentials?
+        </span>
+        
+        {/* The Kinetic Underline - animates from the center out */}
+        <span className="relative w-0 h-[1px] bg-black mt-1 transition-all duration-300 group-hover:w-full" />
+        
+        {/* Subtle Glow Point - only appears on hover */}
+        <span className="absolute -bottom-2 w-1 h-1 bg-blue-500 rounded-full scale-0 transition-transform duration-500 group-hover:scale-100 blur-[1px]" />
+    </button>
+</div>
+            </form>
+        </div>
+    )
+}
