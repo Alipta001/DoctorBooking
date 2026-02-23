@@ -62,10 +62,10 @@ export default function LoginLayout() {
           </Link>
 
           <div className="text-center pt-6">
-  {/* Container for links with spacing and a divider */}
+  
   <div className="flex items-center justify-center gap-6 sm:gap-8">
     
-    {/* Forgot Password */}
+
     <button
       type="button"
       className="group relative flex flex-col items-center cursor-pointer outline-none"
@@ -73,16 +73,14 @@ export default function LoginLayout() {
       <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.2em] text-gray-400 transition-colors duration-300 group-hover:text-black">
         Forgot Password
       </span>
-      {/* Animated Underline */}
+   
       <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-black transition-all duration-500 group-hover:w-full" />
-      {/* Premium Accent Dot */}
+  
       <span className="absolute -bottom-3 w-[3px] h-[3px] bg-amber-600 rounded-full opacity-0 translate-y-2 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0" />
     </button>
 
-    {/* Vertical Minimalist Divider */}
     <div className="h-4 w-[1px] bg-gray-200 rotate-[20deg]" />
 
-    {/* Update Password */}
     <button
       type="button"
       className="group relative flex flex-col items-center cursor-pointer outline-none"

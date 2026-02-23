@@ -37,6 +37,7 @@ import RegisterFunction from "@/api/functions/register.api";
 import verifyOtp from "@/api/functions/otp.api";
 import login from "@/api/functions/login.api";
 
+//register
 export const useSignUpMutation = () => {
     const [cookies, setCookie] = useCookies(["userId"]);
     const { queryClient } = useGlobalHooks();
@@ -65,6 +66,7 @@ export const useSignUpMutation = () => {
     });
 }
 
+//otp
 export const useOtpMutation = () => {
     const cookies = new Cookies();
     const { queryClient } = useGlobalHooks();
@@ -93,7 +95,6 @@ export const useOtpMutation = () => {
 }
 
 //signIn
-
 export const useSignInMutation = () => {
     const [cookies, setCookie] = useCookies(["token"]);
     const { queryClient } = useGlobalHooks();

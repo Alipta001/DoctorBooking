@@ -41,7 +41,7 @@ export default function RegisterLayout() {
 
     <div className="relative min-h-[100dvh] w-full flex items-center justify-center py-8 px-4 overflow-x-hidden">
       
-      <div className="absolute inset-0 -z-10 fixed"> {/* Added fixed to keep background static */}
+      <div className="absolute inset-0 -z-10 fixed">
         <img
           src="/images/login2.jpeg"
           alt="Login Background"
