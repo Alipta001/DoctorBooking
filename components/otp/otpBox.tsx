@@ -80,7 +80,7 @@ const [cookies, , removeCookie] = useCookies(["userId"]);
   return (
     <div className="min-h-[400px] w-full flex items-center justify-center p-4">
       <div className="max-w-md w-full text-center">
-        {/* Header Section */}
+        
         <div className="mb-10">
           <h2 className="text-[10px] font-black uppercase tracking-[0.4em] text-gray-400 mb-3">
             Security Check
@@ -93,7 +93,7 @@ const [cookies, , removeCookie] = useCookies(["userId"]);
           </p>
         </div>
 
-        {/* OTP Inputs Container */}
+       
         <div className="flex flex-col gap-10">
           <div className="flex justify-between gap-2 sm:gap-4">
             {[1, 2, 3, 4, 5, 6].map((index) => (
@@ -109,13 +109,13 @@ const [cookies, , removeCookie] = useCookies(["userId"]);
                              group-hover:bg-white/60 group-hover:border-gray-300
                              focus:bg-white focus:border-black focus:ring-4 focus:ring-black/5 focus:shadow-xl"
                 />
-                {/* Visual feedback dot for empty inputs */}
+                
                 <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-1 h-1 bg-gray-300 rounded-full group-focus-within:bg-black transition-colors" />
               </div>
             ))}
           </div>
 
-          {/* Action Buttons */}
+         
           <div className="space-y-6">
             <button className="group relative w-full h-[58px] bg-black text-white rounded-full overflow-hidden transition-all duration-500 hover:shadow-[0_20px_40px_rgba(0,0,0,0.3)] active:scale-[0.97] cursor-pointer" onClick={handleSubmit} disabled={isPending}>
               <span className="relative z-10 font-bold tracking-[0.2em] text-xs uppercase">

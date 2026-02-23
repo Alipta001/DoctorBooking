@@ -314,7 +314,6 @@ onSuccess: (res) => {
     return (
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 sm:space-y-10 w-full">
             
-            {/* Names Row */}
             <div className="grid grid-cols-2 gap-4 sm:gap-10">
                 <div className="group relative">
                     <input 
@@ -417,7 +416,7 @@ onSuccess: (res) => {
                 <button 
                     type='submit' 
                     disabled={isPending}
-                    className="group relative w-full h-[48px] sm:h-[60px] bg-black text-white rounded-xl overflow-hidden transition-all duration-500 hover:shadow-xl active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed"
+                    className="group relative w-full h-[48px] sm:h-[60px] bg-black text-white rounded-xl overflow-hidden transition-all duration-500 hover:shadow-xl active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed cursor-pointer"
                 >
                     <span className="relative z-10 font-bold tracking-[0.2em] text-[14px] uppercase">
                         {isPending ? "Creating Account..." : "Sign Up"}
