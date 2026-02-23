@@ -22,12 +22,20 @@
 //   )
 // }
 
-"use client"
-import React from 'react'
+"use client";
+
+import {
+  useOtpMutation,
+} from "@/customHooks/query/auth.query.hooks";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
+import { useCookies } from "react-cookie";
+import { toast } from "sonner";
 
 export default function OtpBox() {
-
-     const handleChange = (e, index) => {
+const [cookies, , removeCookie] = useCookies(["userId"]);
+  const router = useRouter();
+  const handleChange = (e, index) => {
     const value = e.target.value.replace(/\D/g, "").slice(-1);
     e.target.value = value;
     if (value) {
@@ -36,37 +44,42 @@ export default function OtpBox() {
     }
   };
 
-  const handleSubmit = async (e) => {
+  const { mutate, isPending, data, isSuccess } = useOtpMutation();
+
+  const handleSubmit = (e) => {
     e.preventDefault();
+
     let otpValue = "";
-    for (let i = 0; i < 6; i++) {
+    for (let i = 1; i <= 6; i++) {
       const box = document.getElementById(`otp-${i}`);
       otpValue += box.value;
     }
-    const data = {
+    const userId = cookies.userId || "";
+    console.log("User ID from cookies:", userId);
+
+    const payload = {
       userId: userId,
       otp: otpValue,
     };
-    console.log("Payload sending to API:", data);
-    try {
-      const response = await AxiosInstance.post(endPoints.auth.otp, data);
 
-      if (response.data.status === true) {
-        alert("OTP Verified Successfully");
-        navigate("/")
-      } else {
-        alert(response.data.message);
-      }
-    } catch (error) {
-      console.log("OTP verification failed", error);
-    }
+    console.log("Payload sending to API:", payload);
+
+    mutate(payload);
   };
+  useEffect(() => {
+    if (isSuccess) {
+      if (data?.status === true) {
+        toast.success(data?.message || "OTP Verified Successfully!");
+        router.push("/auth/signin");
+      } else {
+        toast.error(data?.message || "OTP Verification Failed.");
+      }
+    }
+  }, [isSuccess, data]);
 
-  
   return (
-    <div className='min-h-[400px] w-full flex items-center justify-center p-4'>
+    <div className="min-h-[400px] w-full flex items-center justify-center p-4">
       <div className="max-w-md w-full text-center">
-        
         {/* Header Section */}
         <div className="mb-10">
           <h2 className="text-[10px] font-black uppercase tracking-[0.4em] text-gray-400 mb-3">
@@ -84,10 +97,13 @@ export default function OtpBox() {
         <div className="flex flex-col gap-10">
           <div className="flex justify-between gap-2 sm:gap-4">
             {[1, 2, 3, 4, 5, 6].map((index) => (
-              <div key={index} className="group relative w-12 h-16 sm:w-14 sm:h-20">
-                <input 
-                  type="text" 
-                    id={`otp-${index}`}
+              <div
+                key={index}
+                className="group relative w-12 h-16 sm:w-14 sm:h-20"
+              >
+                <input
+                  type="text"
+                  id={`otp-${index}`}
                   onChange={(e) => handleChange(e, index)}
                   className="w-full h-full bg-white/40 backdrop-blur-md border border-gray-200 rounded-2xl text-center text-xl font-light text-gray-800 outline-none transition-all duration-300
                              group-hover:bg-white/60 group-hover:border-gray-300
@@ -101,7 +117,7 @@ export default function OtpBox() {
 
           {/* Action Buttons */}
           <div className="space-y-6">
-            <button className="group relative w-full h-[58px] bg-black text-white rounded-full overflow-hidden transition-all duration-500 hover:shadow-[0_20px_40px_rgba(0,0,0,0.3)] active:scale-[0.97] cursor-pointer">
+            <button className="group relative w-full h-[58px] bg-black text-white rounded-full overflow-hidden transition-all duration-500 hover:shadow-[0_20px_40px_rgba(0,0,0,0.3)] active:scale-[0.97] cursor-pointer" onClick={handleSubmit} disabled={isPending}>
               <span className="relative z-10 font-bold tracking-[0.2em] text-xs uppercase">
                 Verify Identity
               </span>
@@ -112,8 +128,8 @@ export default function OtpBox() {
               <span className="text-[10px] text-gray-400 uppercase tracking-widest">
                 Didn't receive the code?
               </span>
-              <button 
-                type="button" 
+              <button
+                type="button"
                 className="group relative inline-flex flex-col items-center cursor-pointer"
               >
                 <span className="text-[11px] font-black uppercase tracking-[0.2em] text-gray-900 transition-colors group-hover:text-blue-600">
@@ -124,8 +140,7 @@ export default function OtpBox() {
             </div>
           </div>
         </div>
-
       </div>
     </div>
-  )
+  );
 }

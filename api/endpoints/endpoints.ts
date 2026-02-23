@@ -2,8 +2,7 @@ export const endPoints = {
     auth: {
         signIn: "/auth/login",
         signUp: "/auth/register",
-        logout: "/auth/logout",
-        refresh: "/auth/refresh",
+        otp: "/auth/verify_otp"
     },
     user: {
         profile: "/user/profile",

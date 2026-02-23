@@ -121,6 +121,9 @@ export default function LoginForm() {
 import { useForm } from 'react-hook-form';
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from 'yup';
+import { useRouter } from 'next/dist/client/components/navigation';
+import { useSignInMutation } from '@/customHooks/query/auth.query.hooks';
+import { useEffect } from 'react';
 
 // Validation Schema
 const schema = yup.object().shape({
@@ -129,6 +132,8 @@ const schema = yup.object().shape({
 });
 
 export default function LoginForm() {
+    const {mutate, isPending, isSuccess, data} = useSignInMutation();
+    const router = useRouter();
     const {
         register,
         handleSubmit,
@@ -140,8 +145,20 @@ export default function LoginForm() {
 
     const onSubmit = (data) => {
         console.log("Login Data:", data);
-        // Add your login mutation here
+        const payload = {
+            email: data.email,
+            password: data.password,
+        };
+        console.log("Payload sending to API:", payload);
+        mutate(payload); 
     }
+    useEffect(() => {
+        if (isSuccess) {
+            if (data?.status === true) {
+                router.push("/pages/home");
+            }
+        }
+    }, [isSuccess, data, router]);
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">

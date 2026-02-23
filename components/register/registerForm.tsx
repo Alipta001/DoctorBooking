@@ -300,14 +300,12 @@ export default function RegisterForm() {
         }, {
       
 onSuccess: (res) => {
-    // Using ?. makes sure it doesn't crash even if res is weirdly empty
     if (res?.status === true || res?.status === 'true') {
         toast.success(res?.message || "Success!");
         router.push("/auth/otp");
     }
             },
             onError: (err) => {
-                // The hook handles the error toast, but you can add local logic here if needed
                 console.error("Registration failed:", err);
             }
         });
@@ -343,7 +341,7 @@ onSuccess: (res) => {
                 </div>
             </div>
 
-            {/* Email */}
+
             <div className="group relative">
                 <input 
                     {...register("email")}
@@ -356,7 +354,7 @@ onSuccess: (res) => {
                 )}
             </div>
 
-            {/* Password Row */}
+
             <div className="grid grid-cols-2 gap-4 sm:gap-10">
                 <div className="group relative">
                     <input 
@@ -383,7 +381,6 @@ onSuccess: (res) => {
                 </div>
             </div>
 
-            {/* Address */}
             <div className="group relative">
                 <input 
                     {...register("address")}
@@ -396,7 +393,7 @@ onSuccess: (res) => {
                 )}
             </div>
 
-            {/* Role */}
+
             <div className="group relative">
                 <select 
                     {...register("role")}
@@ -415,7 +412,7 @@ onSuccess: (res) => {
                 )}
             </div>
 
-            {/* Submit Button */}
+      
             <div className="pt-4">
                 <button 
                     type='submit' 
@@ -429,7 +426,6 @@ onSuccess: (res) => {
                 </button>
             </div>
 
-            {/* Link to Login */}
             <div className="text-center">
                 <Link href="/auth/signin" className="group relative inline-block">
                     <span className="text-[12px] font-black uppercase tracking-[0.1em] text-gray-400 group-hover:text-black transition-colors">Sign In Instead</span>

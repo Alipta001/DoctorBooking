@@ -38,8 +38,7 @@ import RegisterForm from './registerForm'
 
 export default function RegisterLayout() {
   return (
-    // 1. Use min-h-[100dvh] for perfect mobile height
-    // 2. Changed p-4 to py-8 to ensure there's balanced breathing room without extra scroll
+
     <div className="relative min-h-[100dvh] w-full flex items-center justify-center py-8 px-4 overflow-x-hidden">
       
       <div className="absolute inset-0 -z-10 fixed"> {/* Added fixed to keep background static */}
@@ -50,10 +49,6 @@ export default function RegisterLayout() {
         />
         <div className="absolute inset-0 bg-black/40"></div>
       </div>
-
-      {/* 3. Added overflow-hidden to prevent absolute error messages 
-            from creating invisible scroll space at the bottom 
-      */}
       <div className="relative z-10 w-full max-w-[500px] bg-white/95 backdrop-blur-md p-6 sm:p-10 rounded-[2.5rem] shadow-2xl overflow-hidden">
         
         <div className="text-center mb-6 sm:mb-8">
