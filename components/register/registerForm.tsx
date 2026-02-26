@@ -240,6 +240,7 @@ import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 import * as yup from 'yup';
+import LoaderButton from '../layout/loaderButton';
 
 const schema = yup.object().shape({
     firstName: yup
@@ -412,7 +413,7 @@ onSuccess: (res) => {
             </div>
 
       
-            <div className="pt-4">
+            {/* <div className="pt-4">
                 <button 
                     type='submit' 
                     disabled={isPending}
@@ -423,7 +424,14 @@ onSuccess: (res) => {
                     </span>
                     <div className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
                 </button>
-            </div>
+            </div> */}
+
+{/*             <button 
+    type='submit' 
+    className="group relative w-full h-[48px] sm:h-[60px] bg-black text-white rounded-xl overflow-hidden transition-all duration-500 hover:shadow-2xl active:scale-[0.98] disabled:opacity-90 disabled:cursor-not-allowed cursor-pointer"
+></button> */}
+    <LoaderButton title="Create Account" loadingText="Creating Account..." isPending={isPending} type='submit'/>
+
 
             <div className="text-center">
                 <Link href="/auth/signin" className="group relative inline-block">

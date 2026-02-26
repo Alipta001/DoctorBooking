@@ -1,6 +1,6 @@
 import axios from "axios";
 import { Cookies } from "react-cookie";
-export const BaseURL = "http://localhost:4000";
+export const BaseURL = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:4000";
 export const AxiosInstance = axios.create({
   baseURL: BaseURL,
   headers: {
@@ -15,7 +15,7 @@ AxiosInstance.interceptors.request.use(
 
     if (token) {
       config.headers = config.headers || {};
-      config.headers["Authorization"] = `Bearer ${token}`; 
+      config.headers["x-access-token"] = token; 
     }
 
     return config;

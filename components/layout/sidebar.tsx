@@ -109,6 +109,10 @@ import {
   Search,
 } from "lucide-react";
 
+import { Cookies } from "react-cookie";
+import { useRouter } from "next/navigation";
+import { toast } from "sonner";
+
 const navLinks = [
   { icon: LayoutDashboard, label: "Overview", path: "/pages/home" },
   { icon: UserRound, label: "Doctors", path: "/pages/doctorPage" },
@@ -119,8 +123,14 @@ const navLinks = [
 
 export default function SideBar() {
   const pathname = usePathname();
+  const router = useRouter();
   const [isMobileOpen, setIsMobileOpen] = useState(false);
-
+const handleLogout = () => {
+  const cookies =new Cookies();
+  cookies.remove("token", {path: '/'});
+  router.push("/auth/signin");
+  toast.success("Logged out successfully");
+}
   const NavItem = ({ link }: any) => {
     const isActive = pathname === link.path;
     const Icon = link.icon;
@@ -149,7 +159,6 @@ export default function SideBar() {
 
   const Content = () => (
     <div className="flex flex-col h-full">
-      {/* Logo */}
       <div className="flex items-center gap-3 mb-10">
         <div className="w-10 h-10 bg-black rounded-2xl flex items-center justify-center">
           <div className="w-4 h-4 bg-white rounded-full" />
@@ -159,14 +168,12 @@ export default function SideBar() {
         </span>
       </div>
 
-      {/* Navigation */}
       <nav className="space-y-2 flex-1">
         {navLinks.map((link) => (
           <NavItem key={link.path} link={link} />
         ))}
       </nav>
 
-      {/* Bottom Section */}
       <div className="pt-6 border-t space-y-2">
         <Link
           href="/dashboard/settings"
@@ -178,7 +185,7 @@ export default function SideBar() {
           </span>
         </Link>
 
-        <button className="w-full flex items-center gap-4 px-6 py-3 rounded-2xl text-amber-600 hover:bg-amber-50 transition">
+        <button className="w-full flex items-center gap-4 px-6 py-3 rounded-2xl text-amber-600 hover:bg-amber-50 transition" onClick={handleLogout}>
           <LogOut size={18} />
           <span className="text-xs font-bold uppercase tracking-widest">
             Logout
@@ -190,7 +197,6 @@ export default function SideBar() {
 
   return (
     <>
-      {/* Mobile Header */}
       <div className="lg:hidden fixed top-0 left-0 right-0 h-20 bg-white border-b z-40 px-6 flex items-center justify-between">
         <button
           onClick={() => setIsMobileOpen(true)}
@@ -201,25 +207,19 @@ export default function SideBar() {
         <span className="font-black text-sm uppercase">DocR</span>
         <Search size={18} className="text-gray-400" />
       </div>
-
-      {/* Desktop Sidebar */}
       <aside className="hidden lg:flex flex-col w-80 bg-white border-r p-8 h-screen sticky top-0 overflow-y-auto">
         <Content />
       </aside>
-
-      {/* Mobile Sidebar */}
+      
       <div
         className={`fixed inset-0 z-50 lg:hidden transition-opacity duration-300 ${
           isMobileOpen ? "opacity-100 visible" : "opacity-0 invisible"
         }`}
       >
-        {/* Overlay */}
         <div
           onClick={() => setIsMobileOpen(false)}
           className="absolute inset-0 bg-black/40"
         />
-
-        {/* Sidebar Panel */}
         <div
           className={`absolute top-0 left-0 bottom-0 w-[85%] max-w-[320px] bg-white p-8 shadow-2xl transition-transform duration-300 ${
             isMobileOpen ? "translate-x-0" : "-translate-x-full"

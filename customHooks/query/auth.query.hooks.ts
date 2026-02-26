@@ -108,14 +108,12 @@ export const useSignInMutation = () => {
             if (status === true || status === "true") {
                 toast.success(message || "Login successful!");
                 setCookie("token", data?.token || "", { path: "/" });
-                // Only invalidate if you have a "User List" or "Profile" query to refresh
                 queryClient.invalidateQueries({ queryKey: ["USER_DATA"] }); 
             } else {
                 toast.error(message || "An unexpected error occurred.");
             }
         },
         onError: (error) => {
-            // This catches the 'throw' from your RegisterFunction
             const errorMessage = error?.message || "Server connection failed";
             toast.error(errorMessage);
             console.error("Mutation Error:", error);

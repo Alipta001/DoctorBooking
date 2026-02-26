@@ -51,51 +51,6 @@ export default function LoginLayout() {
 
         <div className="loginForm w-full max-w-sm mx-auto">
           <LoginForm />
-          <Link href="/auth/signup">
-            <button
-              type="button"
-              className="w-full py-3.5 border border-gray-200 rounded-full text-sm font-semibold text-gray-700 transition-all duration-300 
-                               hover:bg-gray-50 hover:border-gray-300 hover:shadow-sm active:scale-[0.98] cursor-pointer"
-            >
-              Create an account
-            </button>
-          </Link>
-
-          <div className="text-center pt-6">
-  
-  <div className="flex items-center justify-center gap-6 sm:gap-8">
-    
-
-    <button
-      type="button"
-      className="group relative flex flex-col items-center cursor-pointer outline-none"
-    >
-      <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.2em] text-gray-400 transition-colors duration-300 group-hover:text-black">
-        Forgot Password
-      </span>
-   
-      <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-black transition-all duration-500 group-hover:w-full" />
-  
-      <span className="absolute -bottom-3 w-[3px] h-[3px] bg-amber-600 rounded-full opacity-0 translate-y-2 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0" />
-    </button>
-
-    <div className="h-4 w-[1px] bg-gray-200 rotate-[20deg]" />
-
-    <button
-      type="button"
-      className="group relative flex flex-col items-center cursor-pointer outline-none"
-    >
-      <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.2em] text-gray-400 transition-colors duration-300 group-hover:text-black">
-        Update Password
-      </span>
-      {/* Animated Underline */}
-      <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-black transition-all duration-500 group-hover:w-full" />
-      {/* Premium Accent Dot */}
-      <span className="absolute -bottom-3 w-[3px] h-[3px] bg-amber-600 rounded-full opacity-0 translate-y-2 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0" />
-    </button>
-    
-  </div>
-</div>
         </div>
       </div>
     </div>

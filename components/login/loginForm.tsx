@@ -124,8 +124,10 @@ import * as yup from 'yup';
 import { useRouter } from 'next/dist/client/components/navigation';
 import { useSignInMutation } from '@/customHooks/query/auth.query.hooks';
 import { useEffect } from 'react';
+import Link from 'next/link';
+import LoaderButton from '../layout/loaderButton';
 
-// Validation Schema
+
 const schema = yup.object().shape({
     email: yup.string().email("Invalid format").required("Required"),
     password: yup.string().min(6, "Min 6 characters").required("Required"),
@@ -162,9 +164,8 @@ export default function LoginForm() {
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
-            <div className="space-y-6"> {/* Increased gap slightly for error messages */}
+            <div className="space-y-6">
                 
-                {/* Email Field */}
                 <div className="group relative">
                     <input 
                         {...register("email")}
@@ -182,7 +183,6 @@ export default function LoginForm() {
                     )}
                 </div>
 
-                {/* Password Field */}
                 <div className="group relative">
                     <input 
                         {...register("password")}
@@ -201,21 +201,58 @@ export default function LoginForm() {
                 </div>
             </div>
 
-            <button 
+            {/* <button 
                 type='submit' 
-                className="group relative w-full h-[54px] bg-black text-white rounded-full overflow-hidden transition-all duration-300 hover:shadow-[0_15px_30px_rgba(0,0,0,0.2)] active:scale-[0.98] cursor-pointer"
+                disabled={isPending}
+                className="group relative w-full h-[48px] sm:h-[60px] bg-black text-white rounded-xl overflow-hidden transition-all duration-500 hover:shadow-2xl active:scale-[0.98] disabled:opacity-90 disabled:cursor-not-allowed cursor-pointer"
             >
-                <span className="relative z-10 font-medium tracking-tight text-[14px] uppercase">
-                    Login
-                </span>
-                <div className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
-            </button>
+                </button> */}
+                <LoaderButton title="Login" loadingText="Logging in..." isPending={isPending} type="submit" />
 
             <div className="flex items-center gap-4 my-2">
                 <div className="h-[1px] w-full bg-gray-100" />
                 <span className="text-[14px] text-gray-400 font-bold uppercase tracking-widest">OR</span>
                 <div className="h-[1px] w-full bg-gray-100" />
             </div>
+            <Link href="/auth/signup">
+            <button
+              type="button"
+              className="w-full py-3.5 border border-gray-200 rounded-full text-sm font-semibold text-gray-700 transition-all duration-300 
+                               hover:bg-gray-50 hover:border-gray-300 hover:shadow-sm active:scale-[0.98] cursor-pointer"
+            >
+              Create an account
+            </button>
+          </Link>
+
+          <div className="text-center pt-6">
+            <div className="flex items-center justify-center gap-6 sm:gap-8">
+              <button
+                type="button"
+                className="group relative flex flex-col items-center cursor-pointer outline-none"
+              >
+                <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.2em] text-gray-400 transition-colors duration-300 group-hover:text-black">
+                  Forgot Password
+                </span>
+
+                <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-black transition-all duration-500 group-hover:w-full" />
+
+                <span className="absolute -bottom-3 w-[3px] h-[3px] bg-amber-600 rounded-full opacity-0 translate-y-2 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0" />
+              </button>
+
+              <div className="h-4 w-[1px] bg-gray-200 rotate-[20deg]" />
+
+              <button
+                type="button"
+                className="group relative flex flex-col items-center cursor-pointer outline-none"
+              >
+                <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.2em] text-gray-400 transition-colors duration-300 group-hover:text-black">
+                  Update Password
+                </span>
+                <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-black transition-all duration-500 group-hover:w-full" />
+                <span className="absolute -bottom-3 w-[3px] h-[3px] bg-amber-600 rounded-full opacity-0 translate-y-2 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0" />
+              </button>
+            </div>
+          </div>
         </form>
     );
 }
