@@ -68,7 +68,6 @@ export const useSignUpMutation = () => {
 
 //otp
 export const useOtpMutation = () => {
-    const cookies = new Cookies();
     const { queryClient } = useGlobalHooks();
 
     return useMutation({

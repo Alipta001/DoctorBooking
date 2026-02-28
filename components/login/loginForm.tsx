@@ -130,7 +130,7 @@ import LoaderButton from '../layout/loaderButton';
 
 const schema = yup.object().shape({
     email: yup.string().email("Invalid format").required("Required"),
-    password: yup.string().min(6, "Min 6 characters").required("Required"),
+    password: yup.string().min(6, "Min 8 characters").required("Required"),
 });
 
 export default function LoginForm() {

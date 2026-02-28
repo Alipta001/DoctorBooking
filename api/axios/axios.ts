@@ -1,6 +1,6 @@
 import axios from "axios";
 import { Cookies } from "react-cookie";
-export const BaseURL = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:4000";
+export const BaseURL = /* process.env.NEXT_PUBLIC_BACKEND_URL || */ "http://localhost:4000";
 
 
 console.log("BaseURL:", BaseURL);
@@ -9,13 +9,14 @@ export const AxiosInstance = axios.create({
   headers: {
     "Content-Type": "application/json",
   },
-  withCredentials: true,   // ✅ REQUIRED
+  /* withCredentials: true,   */
 });
 
 AxiosInstance.interceptors.request.use(
   function (config) {
     const cookie = new Cookies();
     const token = cookie.get("token");
+    console.log("Token in Axios:"+ token)
 
     if (token) {
       config.headers = config.headers || {};
