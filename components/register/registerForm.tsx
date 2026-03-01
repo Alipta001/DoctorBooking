@@ -275,10 +275,6 @@ const schema = yup.object().shape({
         .trim()
         .min(5, "Please provide a complete address")
         .required("Physical address is required"),
-    role: yup
-        .string()
-        .oneOf(["user", "admin"], "Please select a valid role")
-        .required("Account role selection is required")
 });
 
 export default function RegisterForm() {
@@ -390,25 +386,6 @@ onSuccess: (res) => {
                 />
                 {errors.address && (
                     <p className="text-[11px] font-bold uppercase text-amber-700 mt-1 absolute">{errors.address.message}</p>
-                )}
-            </div>
-
-
-            <div className="group relative">
-                <select 
-                    {...register("role")}
-                    className={`w-full px-0 py-1.5 sm:py-2 bg-transparent border-b ${errors.role ? 'border-amber-600/40' : 'border-gray-200'} outline-none text-sm transition-all appearance-none cursor-pointer`}
-                    defaultValue=""
-                >
-                    <option value="" disabled>Select Role</option>
-                    <option value="user">User</option>
-                    <option value="admin">Admin</option>
-                </select>
-                <div className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
-                    <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" /></svg>
-                </div>
-                {errors.role && (
-                    <p className="text-[11px] font-bold uppercase text-amber-700 mt-1 absolute">{errors.role.message}</p>
                 )}
             </div>
 

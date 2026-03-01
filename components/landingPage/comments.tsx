@@ -65,7 +65,6 @@ export default function Comments() {
           </motion.h2>
         </div>
 
-        {/* Uniform Grid Layout */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {testimonials.map((t, idx) => (
             <motion.div 
@@ -74,13 +73,10 @@ export default function Comments() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              // h-full ensures all cards stretch to match the tallest one in the row
               className="relative flex flex-col h-full bg-[#0C0C0C] border border-white/[0.08] rounded-[2.5rem] p-10 hover:border-amber-400/30 transition-all duration-500 group overflow-hidden"
             >
-              {/* Glow Background */}
               <div className={`absolute inset-0 bg-gradient-to-br ${t.bgImage} to-transparent opacity-20 group-hover:opacity-100 transition-opacity duration-700`} />
 
-              {/* User Header */}
               <div className="flex items-center justify-between mb-8 relative z-10">
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 rounded-2xl bg-zinc-800 border border-white/10 flex items-center justify-center font-bold text-xl text-amber-400 group-hover:scale-110 transition-transform">
@@ -100,8 +96,6 @@ export default function Comments() {
                   <Star size={12} fill="currentColor" stroke="none" />
                 </div>
               </div>
-
-              {/* Testimonial Content - flex-grow ensures this area takes up remaining space */}
               <div className="relative z-10 flex-grow">
                 <Quote className="text-amber-400/20 mb-4" size={32} />
                 <p className="text-zinc-300 text-base leading-relaxed font-medium line-clamp-4 group-hover:text-white transition-colors">
@@ -109,7 +103,6 @@ export default function Comments() {
                 </p>
               </div>
 
-              {/* Status Badge at the bottom */}
               <div className="mt-8 pt-6 border-t border-white/5 relative z-10">
                  <span className="text-[9px] font-black text-emerald-400 bg-emerald-400/10 px-2 py-1 rounded-md border border-emerald-400/20 tracking-widest uppercase">
                    Verified Patient

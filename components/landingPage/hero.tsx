@@ -55,12 +55,10 @@ import { ArrowRight, ShieldCheck, Zap } from "lucide-react";
 export default function Hero() {
   return (
     <header className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#050505] pt-30">
-      {/* Dynamic Background Elements */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-900/20 via-transparent to-transparent"></div>
       <div className="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] bg-blue-600/10 rounded-full blur-[120px]"></div>
       <div className="absolute bottom-[10%] -right-[10%] w-[30%] h-[30%] bg-cyan-500/10 rounded-full blur-[120px]"></div>
 
-      {/* Navbar */}
       <nav className="fixed top-0 left-0 w-full flex justify-between items-center px-8 py-6 md:px-20 z-[100] bg-black/50 backdrop-blur-xl border-b border-white/5">
         <h1 className="text-2xl font-black tracking-tighter text-white italic uppercase">
           Doc<span className="text-gray-500 font-medium">Reserve</span>
@@ -71,7 +69,7 @@ export default function Hero() {
           <a href="#" className="hover:text-white transition-colors">How it works</a>
         </div>
         <Link href="/auth/signin">
-          <button className="px-6 py-2.5 bg-white text-black text-[10px] font-black uppercase tracking-widest rounded-full hover:scale-105 transition-all">
+          <button className="px-6 py-2.5 bg-white text-black text-[10px] font-black uppercase tracking-widest rounded-full hover:scale-105 transition-all cursor-pointer">
             Enter Portal
           </button>
         </Link>
@@ -115,7 +113,7 @@ export default function Hero() {
           className="flex flex-col sm:flex-row justify-center gap-6"
         >
           <Link href="/auth/signup">
-            <button className="group px-10 py-5 bg-white text-black font-black uppercase text-xs tracking-widest rounded-[2rem] flex items-center gap-3 hover:bg-yellow-400 transition-all">
+            <button className="group px-10 py-5 bg-white text-black font-black uppercase text-xs tracking-widest rounded-[2rem] flex items-center gap-3 hover:bg-yellow-400 transition-all cursor-pointer">
               Begin Onboarding <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
             </button>
           </Link>
@@ -125,7 +123,6 @@ export default function Hero() {
           </div>
         </motion.div>
 
-        {/* Floating Mockup Preview */}
         <motion.div 
           initial={{ opacity: 0, y: 100 }}
           animate={{ opacity: 1, y: 0 }}

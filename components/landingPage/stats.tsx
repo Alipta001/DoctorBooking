@@ -10,10 +10,9 @@ export default function Stats() {
   ];
 
   return (
-    /* Changed pb-20 to pb-40 to account for the -mt-12 overlap of the search bar */
     <section className="pt-24 pb-40 border-y border-white/5 bg-[#080808] relative overflow-hidden">
       
-      {/* Subtle background glow to make numbers pop */}
+
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1/2 h-1/2 bg-amber-400/5 blur-[120px] rounded-full"></div>
 
       <div className="container mx-auto px-6 relative z-10">

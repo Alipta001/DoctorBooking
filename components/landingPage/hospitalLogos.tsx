@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 const logos = [
   "Mayo Clinic", "Johns Hopkins", "Cleveland Clinic", 
   "Stanford Health", "Cedars-Sinai", "Mount Sinai",
-  "Mayo Clinic", "Johns Hopkins", "Cleveland Clinic" // Duplicate for infinite scroll
+  "Mayo Clinic", "Johns Hopkins", "Cleveland Clinic" 
 ];
 
 export default function HospitalLogos() {
@@ -17,7 +17,7 @@ export default function HospitalLogos() {
       </div>
 
       <div className="relative flex overflow-hidden group">
-        {/* Gradient Fades for the sides */}
+       
         <div className="absolute inset-y-0 left-0 w-40 bg-gradient-to-r from-[#050505] to-transparent z-10" />
         <div className="absolute inset-y-0 right-0 w-40 bg-gradient-to-l from-[#050505] to-transparent z-10" />
 

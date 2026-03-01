@@ -21,12 +21,12 @@ export default function LoginLayout() {
   )
 }*/
 
-import Link from "next/dist/client/link";
+
 import LoginForm from "./loginForm";
 
 export default function LoginLayout() {
   return (
-    <div className="loginLayout relative min-h-screen w-full flex items-center justify-center overflow-hidden">
+    <div className="loginLayout relative min-h-screen w-full flex items-center justify-center overflow-hidden px-4 sm:px-0">
       <div className="backgroundImg absolute inset-0 -z-10">
         <img
           src="/images/login2.jpeg"
@@ -35,17 +35,17 @@ export default function LoginLayout() {
         />
         <div className="absolute inset-0 bg-black/30"></div>
       </div>
-      <div className="container relative z-10 max-w-md w-full bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-2xl mx-4">
-        <div className="loginHeader text-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-800">Welcome Back!</h1>
-          <p className="text-gray-600 mt-2">Please login to your account</p>
+      <div className="container relative z-10 w-full max-w-md sm:max-w-md bg-white/80 backdrop-blur-sm p-6 sm:p-8 rounded-2xl shadow-2xl">
+        <div className="loginHeader text-center mb-6 sm:mb-8">
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-800">Welcome Back!</h1>
+          <p className="text-gray-600 mt-1 sm:mt-2 text-sm sm:text-base">Please login to your account</p>
         </div>
 
-        <div className="image flex justify-center mb-6">
+        <div className="image flex justify-center mb-4 sm:mb-6">
           <img
             src="/images/profile-icon.png"
             alt="Login Image"
-            className="w-32 h-auto rounded-full"
+            className="w-24 h-24 sm:w-32 sm:h-auto rounded-full"
           />
         </div>
 

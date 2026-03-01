@@ -37,7 +37,7 @@ export default function SpecialistSearch() {
                 />
               </div>
             </div>
-            <button className="w-full md:w-auto px-12 py-6 bg-amber-400 text-black font-black uppercase text-xs tracking-[0.2em] rounded-[2rem] hover:bg-white hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-3 group shadow-xl shadow-amber-400/20">
+            <button className="w-full md:w-auto px-12 py-6 bg-amber-400 text-black font-black uppercase text-xs tracking-[0.2em] rounded-[2rem] hover:bg-white hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-3 group shadow-xl shadow-amber-400/20 cursor-pointer">
               Find Doctor <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
             </button>
           </div>
